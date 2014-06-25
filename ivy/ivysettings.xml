@@ -1,0 +1,19 @@
+<ivysettings>
+  <settings defaultResolver="default"/>
+  <property name="ivy.local.default.root" value="${ivy.settings.dir}/local" override="true"/>
+  <property name="ivy.local.cache.root" value="${ivy.settings.dir}/cache" override="true"/>
+  <property name="ivy.local.default.cache.root" value="${ivy.settings.dir}/default-cache" override="true"/>
+
+  <resolvers>
+    <ibiblio name="default" m2compatible="true"/>
+
+    <ibiblio name="restlet" m2compatible="true" root="http://maven.restlet.org/" />
+
+  </resolvers>
+
+  <caches defaultCacheDir="${ivy.local.default.cache.root}"/>
+
+  <modules>
+    <module organisation="org.restlet.jee" name="*" resolver="restlet"/>
+  </modules>
+</ivysettings>

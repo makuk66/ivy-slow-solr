@@ -1,0 +1,14 @@
+<ivy-module version="2.0">
+  <info organisation="com.example" module="example-mod"/>
+
+  <configurations defaultconfmapping="default->default">
+    <conf name="default" extends="compile"/>
+    <conf name="compile"/>
+    <conf name="test"/>
+  </configurations>
+  
+  <dependencies>
+    <dependency org="org.apache.solr" name="solr-analysis-extras" rev="4.8.1" conf="compile->default"/>
+    <dependency org="org.apache.solr" name="solr-test-framework" rev="4.8.1" conf="test->default"/>
+  </dependencies>
+</ivy-module>

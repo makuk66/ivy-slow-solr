@@ -1,0 +1,55 @@
+<project name="ivy-slow-solr"
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant"
+         xmlns:ivy="antlib:org.apache.ivy.ant"
+         xmlns:jacoco="antlib:org.jacoco.ant"
+         default="all">
+
+  <property file="build.properties"/>
+  <fail message="my.ivy.jar not set in build.properties" unless="my.ivy.jar"/>
+  <echo message="my.ivy.jar=${my.ivy.jar}"/>
+  <property name="ivy.dir" location="${basedir}/ivy"/>
+  <property name="ivy.dep.file" location="ivy.xml"/>
+  <property name="build.dir" value="build"/>
+  <property name="lib.dir" value="${build.dir}/lib"/>
+
+  <target name="ivy-init">
+    <path id="ivy.lib.path">
+      <fileset dir="${ivy.dir}" includes="${my.ivy.jar}"/>
+    </path>
+    <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+    <ivy:settings file="${ivy.dir}/ivysettings.xml"/>
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <target name="ivy-report" depends="ivy-init" description="generate Ivy reports for all confs">
+    <ivy:resolve conf="*" log="download-only"/>
+    <ivy:report conf="*" todir="build/ivy-report"/>
+  </target>
+
+  <macrodef name="ivy-resolve-conf">
+    <attribute name="conf"/>
+    <attribute name="lib.dir"/>
+    <attribute name="report.dir"/>
+    <sequential>
+      <echo>Resolving ivy conf: @{conf} for lib.dir: @{lib.dir} in module ${ant.project.name}</echo>
+      <ivy:resolve conf="@{conf}" log="download-only"/>
+      <ivy:report conf="@{conf}" todir="@{report.dir}"/>
+      <ivy:retrieve conf="@{conf}" pattern="@{lib.dir}/ivy/[conf]/[artifact]-[revision](-[classifier]).[ext]"/>
+    </sequential>
+  </macrodef>
+
+  <target name="ivy-resolve-compile" depends="ivy-init" description="fetch dependencies with ivy">
+    <ivy-resolve-conf conf="compile" lib.dir="${lib.dir}" report.dir="${build.dir}/ivy-report"/>
+  </target>
+
+  <target name="ivy-resolve-test" depends="ivy-init" description="fetch dependencies with ivy">
+    <ivy-resolve-conf conf="test" lib.dir="${lib.dir}" report.dir="${build.dir}/ivy-report"/>
+  </target>
+
+  <target name="all" depends="ivy-resolve-compile,ivy-resolve-test"/>
+
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+    <delete dir="ivy/default-cache"/>
+  </target>
+</project>
