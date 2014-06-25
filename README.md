@@ -7,7 +7,9 @@ Possibly related to https://issues.apache.org/jira/browse/IVY-1465
 
 To run: bash build-all.sh
 
-Sample output is in the ./output directory.
+Sample output is in the ./output directory, which has sub directories
+for test runs, and inside has the full output.txt as well as split
+output for each version.
 
 The results show:
 
