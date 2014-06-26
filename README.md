@@ -51,3 +51,4 @@ Looking at that code I see http://svn.apache.org/viewvc/ant/ivy/core/trunk/src/j
              if (!found) {
 
 
+Fixed in https://github.com/apache/ant-ivy/commit/3076802a78f14eb1b4f23831d5a1ccec79b26554. Thanks jeanlouisboudart!
