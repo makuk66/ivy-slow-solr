@@ -21,7 +21,6 @@ The results show:
   See 2014-06-25T12:02:15Z [L3026](https://github.com/makuk66/ivy-slow-solr/blob/master/output/2014-06-25T11:20:13Z/ivy-2.5.0.alpha_20140618062334.txt#L3026) and 2014-06-25T12:39:13Z [L3043](https://github.com/makuk66/ivy-slow-solr/blob/master/output/2014-06-25T11:20:13Z/ivy-2.5.0.alpha_20140618062334.txt#L3043) in output/2014-06-25T11:20:13Z/ivy-2.5.0.alpha_20140618062334.txt
 - my local build does the same. See [L3026](https://github.com/makuk66/ivy-slow-solr/blob/master/output/2014-06-25T11:20:13Z/ivy-2.5.0.alpha_20140623113200.txt#L3026) and [L3042](https://github.com/makuk66/ivy-slow-solr/blob/master/output/2014-06-25T11:20:13Z/ivy-2.5.0.alpha_20140623113200.txt#L3042)
 
-Let me know at makuk66@gmail.com if there's something I'm doing wrong here.
 
 Debugging
 ---------
