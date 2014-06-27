@@ -1,6 +1,8 @@
 ivy-slow-solr
 =============
 
+TL;DR: fixed upstream
+
 test case for ivy resolution failing or being very slow.
 
 Possibly related to:
